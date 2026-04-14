@@ -16,7 +16,7 @@ At this stage it exists to keep the server-side product boundary explicit inside
 ## What this repo does not own
 
 - client/application composition that belongs in `modules/stim/`
-- shared atomic component and theme work that belongs in `modules/stim-components/`
+- shared package-boundary component and theme work that belongs in `modules/stim-packages/`
 - paired runtime and gateway semantics that belong in `modules/santi/` and `modules/santi-link/`
 
 ## Hygiene rule
