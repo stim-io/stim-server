@@ -11,6 +11,7 @@ use stim_proto::DiscoveryRecord;
 #[utoipa::path(
     get,
     path = "/api/v1/health",
+    operation_id = "health",
     tag = "health",
     responses((status = 200, description = "Health check response", body = String))
 )]
@@ -21,6 +22,7 @@ pub async fn health() -> impl IntoResponse {
 #[utoipa::path(
     put,
     path = "/api/v1/discovery/endpoints/{endpoint_id}",
+    operation_id = "register_endpoint",
     tag = "discovery",
     params(("endpoint_id" = String, Path, description = "Declared endpoint identifier")),
     request_body = DiscoveryRecord,
@@ -47,6 +49,7 @@ pub async fn register_endpoint(
 #[utoipa::path(
     get,
     path = "/api/v1/discovery/endpoints/{endpoint_id}",
+    operation_id = "discover_endpoint",
     tag = "discovery",
     params(("endpoint_id" = String, Path, description = "Declared endpoint identifier")),
     responses(
