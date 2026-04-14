@@ -10,6 +10,13 @@ At this stage it exists to keep the server-side product boundary explicit inside
 
 It now also carries the smallest executable dependency proof that `stim-server` can consume the canonical shared contracts from `stim-proto` without redefining them locally.
 
+The next executable baseline now starts in the same narrow posture:
+
+- one in-memory registry adapter
+- one register/update API surface
+- one discovery API surface
+- Rust-side OpenAPI generation from the real HTTP boundary
+
 ## What this repo owns
 
 - server-side product communication and coordination for `stim`
