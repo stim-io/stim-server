@@ -14,8 +14,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
       - name: Verify cold-start baseline files exist
         run: |
           test -f README.md
           test -f AGENTS.md
           test -f .gitignore
+
+      - name: Verify stim-proto consumer proof
+        run: cargo test

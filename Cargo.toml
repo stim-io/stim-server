@@ -1,0 +1,11 @@
+[package]
+name = "stim-server"
+version = "0.1.0-dev.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[dependencies]
+stim-proto = { path = "../stim-proto/crates/stim-proto" }
+
+[workspace]

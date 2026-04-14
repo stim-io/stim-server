@@ -8,6 +8,8 @@ This repo is intentionally still minimal.
 
 At this stage it exists to keep the server-side product boundary explicit inside the workspace without faking a mature server architecture before the first real implementation slice exists.
 
+It now also carries the smallest executable dependency proof that `stim-server` can consume the canonical shared contracts from `stim-proto` without redefining them locally.
+
 ## What this repo owns
 
 - server-side product communication and coordination for `stim`
@@ -29,6 +31,6 @@ Before broader convenience work grows around this repo, keep the baseline clean:
 
 ## Current CI stance
 
-The current CI baseline is intentionally minimal.
+The current CI baseline is intentionally narrow.
 
-Its job is only to keep the repo from remaining governance-empty during cold start. It is not a substitute for real server verification.
+Its current job is to prove the repo baseline exists and that the first `stim-proto` consumer path still compiles. It is not yet a substitute for real server verification.
