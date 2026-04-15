@@ -34,10 +34,10 @@ Before broader convenience work grows around this repo, keep the baseline clean:
 
 - `main` should be PR-only with squash-first history
 - avoid accidental artifact commits through a minimal `.gitignore`
-- keep a minimal CI baseline in place now, then replace it with real executable verification when the first server slice lands
+- avoid adding CI/release workflow machinery before the server has a real executable verification or release path worth automating
 
-## Current CI stance
+## Current automation stance
 
-The current CI baseline is intentionally narrow.
+This repo does not currently carry CI or release workflow machinery.
 
-Its current job is to prove the repo baseline exists and that the first `stim-proto` consumer path still compiles. It is not yet a substitute for real server verification.
+Add automation only when there is a real server verification or release path worth enforcing, rather than preserving placeholder workflow coverage.

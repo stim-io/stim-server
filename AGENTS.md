@@ -21,17 +21,16 @@ Detailed server design should be added later when the first real implementation 
 - `main` should advance through PRs rather than direct pushes.
 - Keep force-push protection and branch-deletion protection enabled for `main`.
 - Keep squash merge as the default history strategy.
-- Keep required green checks in front of merge; the current CI baseline is intentionally minimal until the first executable server surface exists.
+- Do not add or preserve CI/distribution workflow machinery until the server has a clearer executable release/verification path.
 
 ## Key File Index
 
 - `AGENTS.md`: stable repo boundary and baseline rules
 - `README.md`: minimal repo purpose and baseline status
-- `.github/workflows/ci.yml`: minimal cold-start CI baseline for repo hygiene
 - `../../AGENTS.md`: repo-root workspace boundary across all attached repos
 
 ## Update Rules
 
 - Keep this file short and durable.
 - Add a fuller docs tree only when the repo has enough real architecture to justify canonical docs.
-- When the first executable server slice appears, evolve the minimal CI baseline into a real executable verification path as part of that slice rather than as an afterthought.
+- When the first executable server slice appears, introduce only the smallest justified verification or release workflow that matches the real server boundary.
