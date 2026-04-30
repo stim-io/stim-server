@@ -21,16 +21,18 @@ Detailed server design should be added later when the first real implementation 
 - `main` should advance through PRs rather than direct pushes.
 - Keep force-push protection and branch-deletion protection enabled for `main`.
 - Keep squash merge as the default history strategy.
-- Do not add or preserve CI/distribution workflow machinery until the server has a clearer executable release/verification path.
+- Keep only the minimal guard workflow until the server has a clearer executable release path; do not add distribution workflow machinery early.
 
 ## Key File Index
 
 - `AGENTS.md`: stable repo boundary and baseline rules
 - `README.md`: minimal repo purpose and baseline status
+- `scripts/guard.py`: minimal executable boundary guard
+- `.github/workflows/guard.yml`: required guard workflow
 - `../../AGENTS.md`: repo-root workspace boundary across all attached repos
 
 ## Update Rules
 
 - Keep this file short and durable.
 - Add a fuller docs tree only when the repo has enough real architecture to justify canonical docs.
-- When the first executable server slice appears, introduce only the smallest justified verification or release workflow that matches the real server boundary.
+- When the server grows beyond the current baseline, expand guard only around real boundary constraints and introduce release workflow machinery only when there is a concrete release path.
