@@ -34,10 +34,10 @@ Before broader convenience work grows around this repo, keep the baseline clean:
 
 - `main` should be PR-only with squash-first history
 - avoid accidental artifact commits through a minimal `.gitignore`
-- avoid adding CI/release workflow machinery before the server has a real executable verification or release path worth automating
+- keep CI limited to the minimal guard workflow until the server has a real release path worth automating
 
 ## Current automation stance
 
-This repo does not currently carry CI or release workflow machinery.
+This repo currently carries only the minimal guard workflow required by the workspace governance model.
 
-Add automation only when there is a real server verification or release path worth enforcing, rather than preserving placeholder workflow coverage.
+Add broader automation only when there is a real server release path worth enforcing, rather than preserving placeholder workflow coverage.
