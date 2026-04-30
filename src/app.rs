@@ -1,4 +1,4 @@
-use axum::{routing::get, routing::put, Router};
+use axum::{Router, routing::get, routing::put};
 use utoipa::OpenApi;
 use utoipa_swagger_ui::SwaggerUi;
 
