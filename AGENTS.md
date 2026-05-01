@@ -4,14 +4,17 @@
 
 This file manages two things only:
 
-- the stable role of `stim-server/` as the server-side implementation boundary for the `stim` product surface
+- the stable role of `stim-server/` as the server-side implementation boundary and durable product IM message-ledger owner for the `stim` product surface
 - the small set of durable repo-baseline rules that should exist before the repo grows real server architecture
 
 Detailed server design should be added later when the first real implementation slice exists.
 
 ## Core Constraints
 
-- `stim-server/` owns server-side product communication and coordination for `stim`; it should not absorb client-side UI composition or paired-agent runtime semantics.
+- `stim-server/` owns server-side product communication, coordination, and durable product IM message-ledger semantics for `stim`; it should not absorb client-side UI composition or paired-agent runtime semantics.
+- `stim-server/` event-driven behavior serves the whole IM/product ledger system. It is separate from `stim` controller operation events, which exist for local app-loop coverage, debugging, and acceptance.
+- Product ledger facts should remain product facts: do not store controller/debug observations or `santi` provider-runtime artifacts as if they were canonical IM ledger events.
+- Cross-ledger relationships should use explicit references, correlation ids, or causation ids rather than assuming another repo's local message/session id is the durable product id.
 - Keep this repo intentionally minimal until a real server implementation exists.
 - Do not fake maturity with large placeholder docs or workflows that are not backed by an executable surface.
 - Even while minimal, keep the repo boundary explicit so it does not drift into blank-history ambiguity.
