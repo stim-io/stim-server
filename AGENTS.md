@@ -14,6 +14,8 @@ Detailed server design should be added later when the first real implementation 
 - `stim-server/` owns server-side product communication, coordination, and durable product IM message-ledger semantics for `stim`; it should not absorb client-side UI composition or paired-agent runtime semantics.
 - `stim-server/` event-driven behavior serves the whole IM/product ledger system. It is separate from `stim` controller operation events, which exist for local app-loop coverage, debugging, and acceptance.
 - Product ledger facts should remain product facts: do not store controller/debug observations or `santi` provider-runtime artifacts as if they were canonical IM ledger events.
+- Participant identity is the product chat identity. Agent registration and heartbeat records are product coordination facts, not local process supervision; they may project a participant, but `agent_id` and `instance_id` remain technical/source markers.
+- `stim-server` owns chat participant selection events and participant delivery-target projection. Chat surfaces choose `participant_id`; delivery code may resolve that participant through `stim-server` into the current protocol endpoint id.
 - Cross-ledger relationships should use explicit references, correlation ids, or causation ids rather than assuming another repo's local message/session id is the durable product id.
 - Keep this repo intentionally minimal until a real server implementation exists.
 - Do not fake maturity with large placeholder docs or workflows that are not backed by an executable surface.
@@ -32,6 +34,7 @@ Detailed server design should be added later when the first real implementation 
 - `README.md`: minimal repo purpose and baseline status
 - `scripts/guard.py`: minimal executable boundary guard
 - `.github/workflows/guard.yml`: required guard workflow
+- `docs/contracts/product-message-ledger.md`: product message-ledger mapping to `stim-proto` facts, content refs, and relations
 - `../../AGENTS.md`: repo-root workspace boundary across all attached repos
 
 ## Update Rules
