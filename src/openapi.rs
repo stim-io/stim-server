@@ -1,6 +1,19 @@
 use utoipa::OpenApi;
 
-use crate::{handler, schema::ErrorResponse};
+use crate::{
+    handler,
+    schema::{
+        AgentInstanceHeartbeatRequest, AgentInstanceListResponse, AgentInstanceRecord,
+        AgentInstanceRegistrationRequest, AgentInstanceStatus, ChatMessageChunkAppendRequest,
+        ChatMessageChunkRecord, ChatMessageContentKind, ChatMessageCreateRequest,
+        ChatMessageFinalizeRequest, ChatMessageKind, ChatMessageListResponse, ChatMessageRecord,
+        ChatMessageState, ChatSessionCreateRequest, ChatSessionListResponse, ChatSessionRecord,
+        ChatSessionState, ErrorResponse, ParticipantDeliveryTarget,
+        ParticipantDeliveryTargetResponse, ParticipantListResponse, ParticipantRecord,
+        ParticipantSelectionRequest, ParticipantSelectionResponse, ParticipantSource,
+        ParticipantStatus,
+    },
+};
 use stim_proto::{DiscoveryRecord, EndpointDeclaration};
 
 #[derive(OpenApi)]
@@ -9,9 +22,52 @@ use stim_proto::{DiscoveryRecord, EndpointDeclaration};
         handler::health,
         handler::register_endpoint,
         handler::discover_endpoint,
+        handler::list_agent_instances,
+        handler::register_agent_instance,
+        handler::heartbeat_agent_instance,
+        handler::get_agent_instance,
+        handler::list_participants,
+        handler::get_participant,
+        handler::get_participant_delivery_target,
+        handler::get_chat_participant_selection,
+        handler::select_chat_participant,
+        handler::get_selected_chat_participant_delivery_target,
+        handler::create_chat_session,
+        handler::list_chat_sessions,
+        handler::get_chat_session,
+        handler::create_chat_message,
+        handler::list_chat_messages,
+        handler::append_chat_message_chunk,
+        handler::finalize_chat_message,
     ),
     components(schemas(
         ErrorResponse,
+        ChatMessageChunkAppendRequest,
+        ChatMessageChunkRecord,
+        ChatMessageContentKind,
+        ChatMessageCreateRequest,
+        ChatMessageFinalizeRequest,
+        ChatMessageKind,
+        ChatMessageListResponse,
+        ChatMessageRecord,
+        ChatMessageState,
+        ChatSessionCreateRequest,
+        ChatSessionListResponse,
+        ChatSessionRecord,
+        ChatSessionState,
+        AgentInstanceHeartbeatRequest,
+        AgentInstanceListResponse,
+        AgentInstanceRecord,
+        AgentInstanceRegistrationRequest,
+        AgentInstanceStatus,
+        ParticipantDeliveryTarget,
+        ParticipantDeliveryTargetResponse,
+        ParticipantListResponse,
+        ParticipantRecord,
+        ParticipantSelectionRequest,
+        ParticipantSelectionResponse,
+        ParticipantSource,
+        ParticipantStatus,
         DiscoveryRecord,
         EndpointDeclaration,
         stim_proto::DeliveryTarget,
@@ -22,6 +78,9 @@ use stim_proto::{DiscoveryRecord, EndpointDeclaration};
     tags(
         (name = "health"),
         (name = "discovery"),
+        (name = "agents"),
+        (name = "participants"),
+        (name = "chat"),
     )
 )]
 pub struct ApiDoc;

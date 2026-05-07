@@ -15,12 +15,16 @@ The next executable baseline now starts in the same narrow posture:
 - one in-memory registry adapter
 - one register/update API surface
 - one discovery API surface
+- one agent instance registration/heartbeat projection API
+- one participant projection, delivery-target, and chat participant selection API
 - Rust-side OpenAPI generation from the real HTTP boundary
 
 ## What this repo owns
 
 - server-side product communication and coordination for `stim`
 - durable product IM message-ledger facts and product-ledger events for the whole IM system
+- product-visible registered agent instance projections maintained by `stim-agents` registration and heartbeat events
+- product-visible participant projections, participant delivery targets, and chat participant selection events keyed by `participant_id`
 - server-side implementation work that should not live in the client repo
 
 ## What this repo does not own
@@ -29,6 +33,7 @@ The next executable baseline now starts in the same narrow posture:
 - controller operation events used by `modules/stim/` for local app-loop coverage, debugging, and acceptance
 - shared package-boundary component and theme work that belongs in `modules/stim-packages/`
 - paired runtime, IM-facing agent ledger views, LLM/runtime ledger views, and gateway semantics that belong in `modules/santi/` and `modules/santi-link/`
+- local agent process lifecycle management, probing policy, and provider/runtime atomic semantics owned by `modules/stim/` `apps/agents/` and `modules/santi/`
 
 ## Ledger boundary rule
 
@@ -39,6 +44,10 @@ The next executable baseline now starts in the same narrow posture:
 - `santi` runtime events and provider assembly facts remain runtime-owned
 
 Cross-layer links should use explicit references, correlation ids, and causation ids. Do not rely on another repo's local `conversation_id` or `message_id` as the durable product ownership model.
+
+Participant identity is product-level. Agent and instance ids are technical source markers that can explain where a participant projection came from, but chat surfaces should select `participant_id`. Delivery code may ask `stim-server` to resolve that participant into the current protocol endpoint id; it should not read local agents active-selection state as routing truth.
+
+`docs/contracts/product-message-ledger.md` is the canonical server-side mapping from the shared `stim-proto` message fact/content/relation contract to product IM ledger ownership.
 
 ## Hygiene rule
 
