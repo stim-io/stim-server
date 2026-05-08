@@ -4,7 +4,7 @@ use stim_server::{app::build_router, state::AppState};
 use tower::util::ServiceExt;
 
 #[tokio::test]
-async fn chat_message_streaming_lifecycle_projects_chunks() {
+async fn streams_message_chunks() {
     let app = build_router(AppState::in_memory());
 
     let session_response = app
@@ -157,7 +157,7 @@ async fn chat_message_streaming_lifecycle_projects_chunks() {
 }
 
 #[tokio::test]
-async fn chat_message_chunks_require_live_message() {
+async fn chunks_require_live_message() {
     let app = build_router(AppState::in_memory());
 
     let missing_session_response = app

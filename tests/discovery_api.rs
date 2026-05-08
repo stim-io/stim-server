@@ -6,7 +6,7 @@ const ENDPOINT_ID: &str = "endpoint-a";
 const DISCOVERY_ROUTE: &str = "/api/v1/discovery/endpoints/endpoint-a";
 
 #[tokio::test]
-async fn registers_then_discovers_endpoint_record() {
+async fn registers_then_discovers() {
     let app = build_router(AppState::in_memory());
 
     let register_response = app

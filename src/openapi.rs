@@ -31,7 +31,7 @@ use stim_proto::{DiscoveryRecord, EndpointDeclaration};
         handler::get_participant_delivery_target,
         handler::get_chat_participant_selection,
         handler::select_chat_participant,
-        handler::get_selected_chat_participant_delivery_target,
+        handler::get_selected_delivery_target,
         handler::create_chat_session,
         handler::list_chat_sessions,
         handler::get_chat_session,

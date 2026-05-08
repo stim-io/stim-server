@@ -42,7 +42,7 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/api/v1/chat/participant-selection/delivery-target",
-            get(handler::get_selected_chat_participant_delivery_target),
+            get(handler::get_selected_delivery_target),
         )
         .route(
             "/api/v1/chat/sessions",
