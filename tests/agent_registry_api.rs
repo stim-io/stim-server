@@ -6,7 +6,7 @@ const INSTANCE_ROUTE: &str = "/api/v1/agents/instances/local-santi";
 const HEARTBEAT_ROUTE: &str = "/api/v1/agents/instances/local-santi/heartbeat";
 
 #[tokio::test]
-async fn registers_lists_and_heartbeats_agent_instance() {
+async fn registers_and_heartbeats() {
     let app = build_router(AppState::in_memory());
 
     let register_response = app
@@ -81,7 +81,7 @@ async fn registers_lists_and_heartbeats_agent_instance() {
 }
 
 #[tokio::test]
-async fn agent_registration_projects_chat_participant_selection() {
+async fn projects_participant_selection() {
     let app = build_router(AppState::in_memory());
 
     let register_response = app
@@ -213,7 +213,7 @@ async fn agent_registration_projects_chat_participant_selection() {
 }
 
 #[tokio::test]
-async fn heartbeat_requires_registered_agent_instance() {
+async fn heartbeat_requires_registration() {
     let app = build_router(AppState::in_memory());
 
     let response = app

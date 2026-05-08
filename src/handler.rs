@@ -275,7 +275,7 @@ pub async fn select_chat_participant(
         (status = 404, description = "Selected participant delivery target not registered", body = ErrorResponse)
     )
 )]
-pub async fn get_selected_chat_participant_delivery_target(
+pub async fn get_selected_delivery_target(
     State(state): State<AppState>,
 ) -> Result<Json<ParticipantDeliveryTargetResponse>, ApiError> {
     state
